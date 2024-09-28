@@ -1,0 +1,28 @@
+Configuration:
+  status: WARN
+  Appenders:
+    Console:
+      name: Console
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%t] %c{1} - %msg%n"
+    File:
+      name: File
+      fileName: logs/logfile.log
+      PatternLayout:
+        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+#      append: true
+
+  Loggers:
+    Root:
+      level: info
+      AppenderRef:
+        - ref: Console
+        - ref: File
+    Logger:
+      - name: com.example.Product
+        level: debug
+        additivity: false
+        AppenderRef:
+          - ref: Console
+          - ref: File
